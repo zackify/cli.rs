@@ -11,3 +11,7 @@ I purchased `cli.rs` for anyone in the [Rust](https://www.rust-lang.org/) commun
 - Create a pull request
 
 The DNS record will be created before I even go to merge the PR :) Enjoy!
+
+## Long Term
+
+Soon this will (hopefully) have a giant list of cool Rust projects for people to check out.
