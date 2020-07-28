@@ -6,9 +6,9 @@ name: Update CNAME records on digitalocean
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,19 +19,20 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-    - name: Install doctl
-      uses: digitalocean/action-doctl@v2
-      with:
-        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-    - name: Update records on digital ocean
-      run: |
-        for file in domains/*; do
-          cname=$(cat $file)
-          echo $file
-          echo $cname
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Update records on digital ocean
+        run: |
+          cd domains
+          for file in *; do
+            cname=$(cat $file)
+            echo $file
+            echo $cname
 
-          doctl compute domain records create --record-type CNAME --record-name $file --record-data $cname
-        done
+            doctl compute domain records create cli.rs --record-type CNAME --record-name $file --record-data $cname
+          done
