@@ -8,10 +8,10 @@ I purchased `cli.rs` for anyone in the [Rust](https://www.rust-lang.org/) commun
 
 - Add a new file in the `domains` folder with the subdomain you want. Ex: `mycoolproject`
 - Inside that file, put the cname you want to alias it to. Ex: `zackify.github.io`
-- Create a pull request
+- Create a pull request (linking to your project also helps)
 - [See this example](https://github.com/zackify/cli.rs/pull/1) if you are confused.
 
-The DNS record will be created before I even go to merge the PR :) Enjoy!
+The DNS record will be created when the PR is merged :) Enjoy!
 
 ## Long Term
 
