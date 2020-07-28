@@ -34,5 +34,5 @@ jobs:
             echo $file
             echo $cname
 
-            doctl compute domain records create cli.rs --record-type CNAME --record-name $file --record-data $cname.
+            doctl compute domain records create cli.rs --record-type CNAME --record-name $file --record-data $cname. || true
           done
