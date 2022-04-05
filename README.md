@@ -1,4 +1,4 @@
-## something.cli.rs for everyone!
+## something.cli.rs for Rust projects!
 
 The `.rs` domain extension is expensive, and can only be purchased on some really shady providers.
 
