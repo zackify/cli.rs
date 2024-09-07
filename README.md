@@ -1,6 +1,9 @@
 ## something.cli.rs for Rust projects!
 
-The `.rs` domain extension is expensive, and can only be purchased on some really shady providers.
+The `.rs` domain extension is expensive, and being a previously unknown ccTLD
+(of Serbia), can only be purchased on some local registrars even more unknown
+to people not from the country it represents, unlike gTLDs like .com and famous
+ccTLDs like .io.
 
 I purchased `cli.rs` for anyone in the [Rust](https://www.rust-lang.org/) community to use.
 
