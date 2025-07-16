@@ -1,36 +1,33 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Update CNAME records on digitalocean
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [master]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
       - name: Update records on digital ocean
         run: |
           cd domains
+          doctl compute domain records list cli.rs > /tmp/domain_records.txt
           for file in *; do
             cname=$(cat $file)
             echo $file
             echo $cname
 
-            doctl compute domain records create cli.rs --record-type CNAME --record-name $file --record-data $cname. || true
+            if ! grep -q "CNAME.*$file.*$cname" /tmp/domain_records.txt; then
+              doctl compute domain records create cli.rs --record-type CNAME --record-name $file --record-data $cname.
+            else
+              echo "CNAME record for $file already exists, skipping..."
+            fi
           done
