@@ -1,0 +1,7 @@
+{
+  "name": "xvoid",
+  "description": "Premium virtual service scraping suite and developer utility hub.",
+  "type": "CNAME",
+  "target": "cname.vercel-dns.com"
+  "txt": "vc-domain-verify=xvoid.cli.rs,72cfeaa7ff5688c8149a"
+}
